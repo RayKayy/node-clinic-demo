@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <header>Blocked Loop</header>
+    <ul id="list">
+
+    </ul>
+  </body>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
+      const es = new EventSource('counter')
+        const eventList = document.getElementById("list");
+        es.onmessage = (event) => {
+          console.log(event)
+          const newElement = document.createElement("li");
+          newElement.innerHTML = "message: " + event.data;
+          eventList.prepend(newElement);
+        }
+    });
+  </script>
+</html>
